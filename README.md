@@ -32,7 +32,7 @@ python run_eval_samples.py
 ```
 *Note: Sample generation requires an API key to access the GPT model.*
 
-## References
+## Credit
 The evaluation code is adapted from [LogicLlama](https://github.com/gblackout/LogicLLaMA.git)
 
 ## Licence
