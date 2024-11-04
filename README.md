@@ -18,5 +18,12 @@ pip install -r requirements.txt
 
 Use `notebook` to generate the files essential for evaluation results mentioned in the paper.
 
+## Evaluation 
+**Perturbation evaluations**
+The perturbations can be generated using `notebook/get_perturbations`. Based on the perturbation, run the file to extract scores for the seven metrics.
+```
+python run_eval_pert.py
+```
+
 ## References
 The evaluation code is majorly an adaptation of code from [LogicLlama](https://github.com/gblackout/LogicLLaMA.git)
