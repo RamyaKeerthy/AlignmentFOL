@@ -6,7 +6,7 @@ import json
 
 
 def eval_pert(
-    data_path="sensitivity.json",
+    data_path="perturbations.json",
     perturbation = "remove_negation"
 ):
     metric = UniversalMetrics()
