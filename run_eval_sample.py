@@ -6,7 +6,8 @@ import random
 
 
 def eval_samples(
-    data_path="gpt_fol_samples.json"
+    data_path="gpt_fol_samples.json",
+    save_file = True
 ):
     metric = UniversalMetrics()
 
@@ -75,24 +76,26 @@ def eval_samples(
         rankmeteor.append(meteor)
         ranksmatch.append(Smatchpp_score)
 
-        # final_ranks = {'id': data_point['id'],
-        #                'text': data_point['premisesNL'],
-        #                'label': data_point['label'],
-        #                'fol1': data_point['fol1'],
-        #                'fol2':data_point['fol2'],
-        #                'fol3': data_point['fol3'],
-        #                'bleu': (bleul, rankit(bleul)),
-        #                'rouge': (rougel, rankit(rougel)),
-        #                'meteor': (meteorl, rankit(meteorl)),
-        #                'bertscore': (bertl, rankit(bertl)),
-        #                'le': (lel, rankit(lel)),
-        #                'smatchpp': (smatchppl, rankit(smatchppl)),
-        #                }
-        # outputs.append(final_ranks)
+        final_ranks = {'id': data_point['id'],
+                       'text': data_point['premisesNL'],
+                       'label': data_point['label'],
+                       'fol1': data_point['fol1'],
+                       'fol2':data_point['fol2'],
+                       'fol3': data_point['fol3'],
+                       'bleu': (bleul, rankit(bleul)),
+                       'rouge': (rougel, rankit(rougel)),
+                       'meteor': (meteorl, rankit(meteorl)),
+                       'bertscore': (bertl, rankit(bertl)),
+                       'le': (lel, rankit(lel)),
+                       'smatchpp': (smatchppl, rankit(smatchppl)),
+                       }
+        outputs.append(final_ranks)
+
+    if save_file:
+        with open('samples_ranking.json', 'w') as file:
+            json.dump(outputs, file, indent=4, ensure_ascii=False)
 
     return rankbleu, rankle, rankbert, rankrouge, rankmeteor, ranksmatch
-    # with open('samples_ranking.json', 'w') as file:
-    #     json.dump(outputs, file, indent=4, ensure_ascii=False)
 
 if __name__ == '__main__':
     fire.Fire(eval_samples)

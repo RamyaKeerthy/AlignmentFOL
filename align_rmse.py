@@ -40,7 +40,7 @@ if __name__ == '__main__':
     for row in human_evals:
         final_human_ranks.append(row['human1'], row['human2'], row['human3'])
 
-    rankbleu, rankle, rankbert, rankrouge, rankmeteor, ranksmatch = eval_samples("gpt_fol_samples.json")
+    rankbleu, rankle, rankbert, rankrouge, rankmeteor, ranksmatch = eval_samples("gpt_fol_samples.json", save_file=False)
     print(f"RMSE bleu: {calculate_rmse(final_human_ranks, rankbleu)}")
     print(f"RMSE LE: {calculate_rmse(final_human_ranks, rankle)}")
     print(f"RMSE BERT: {calculate_rmse(final_human_ranks, rankbert)}")
